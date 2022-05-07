@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
    //Variable Fields
+   [Header("Player Stats")]
    [SerializeField]private float jumpValue = 7f;
    [SerializeField]private float horizontalValue = 3f;
-   private int flipJumpDir = -1;
    [SerializeField]private float fallMultiplier = 2.5f;
    [SerializeField]private float lowJumpMultiplier = 2f;
+   private int flipJumpDir = -1;
    
    //Components Cache:
    private Rigidbody2D _rigidbody2D;
