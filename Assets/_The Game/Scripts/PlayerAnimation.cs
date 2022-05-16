@@ -5,25 +5,24 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Rigidbody2D playerRb;
-    private Animator playerAnimator;
+    private Rigidbody2D _playerRb;
+    private Animator _playerAnimator;
 
     private void Awake()
     {
-        playerRb = GetComponentInParent<Rigidbody2D>();
-        playerAnimator = GetComponent<Animator>();
+        _playerRb = GetComponentInParent<Rigidbody2D>();
+        _playerAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        Debug.Log(playerRb.velocity.y);
-        if (playerRb.velocity.y != 0)
+        if (_playerRb.velocity.y != 0)
         {
-            playerAnimator.SetBool("IsSpin", true);
+            _playerAnimator.SetBool("IsSpin", true);
         }
         else
         {
-            playerAnimator.SetBool("IsSpin", false);
+            _playerAnimator.SetBool("IsSpin", false);
         }
     }
     

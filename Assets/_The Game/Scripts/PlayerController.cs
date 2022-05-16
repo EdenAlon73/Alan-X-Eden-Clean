@@ -17,13 +17,17 @@ public class PlayerController : MonoBehaviour
 
    [SerializeField]private float lowJumpMultiplier = 2f;
    private int flipJumpDir = -1;
+   private float tempScale = 1f;
    
    //Components Cache:
    private Rigidbody2D _rigidbody2D;
+   private SpriteRenderer _spriteRenderer;
     
        private void Awake()
        {
           _rigidbody2D = GetComponent<Rigidbody2D>();
+          _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+          
 
          Time.timeScale = 0;
        }
@@ -34,7 +38,8 @@ public class PlayerController : MonoBehaviour
           {
              _rigidbody2D.velocity = (Vector2.up * jumpValue) + (Vector2.left * horizontalValue);
              horizontalValue *= flipJumpDir;
-            Time.timeScale = 1;
+             
+             Time.timeScale = 1;
           }
           
           if (_rigidbody2D.velocity.y < 0)
@@ -45,6 +50,22 @@ public class PlayerController : MonoBehaviour
           {
              _rigidbody2D.velocity += Vector2.up * (Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
           }
+          
+          
+          tempScale = transform.localScale.x;
+          
+          if (horizontalValue > 0)
+          {
+             tempScale = 1;
+          }
+          else
+          {
+             tempScale = -1;
+          }
+
+          transform.localScale = new Vector3(tempScale, 1 ,1);
+          
+          Debug.Log(tempScale);
        }
 
 
