@@ -8,9 +8,13 @@ public class PlayerController : MonoBehaviour
 {
    //Variable Fields
    [Header("Player Stats")]
+
    [SerializeField]private float jumpValue = 7f;
+
    [SerializeField]private float horizontalValue = 3f;
+
    [SerializeField]private float fallMultiplier = 2.5f;
+
    [SerializeField]private float lowJumpMultiplier = 2f;
    private int flipJumpDir = -1;
    
@@ -20,6 +24,8 @@ public class PlayerController : MonoBehaviour
        private void Awake()
        {
           _rigidbody2D = GetComponent<Rigidbody2D>();
+
+         Time.timeScale = 0;
        }
     
        private void Update()
@@ -27,7 +33,8 @@ public class PlayerController : MonoBehaviour
           if (Input.GetButtonDown("Jump"))
           {
              _rigidbody2D.velocity = (Vector2.up * jumpValue) + (Vector2.left * horizontalValue);
-             horizontalValue *= flipJumpDir; 
+             horizontalValue *= flipJumpDir;
+            Time.timeScale = 1;
           }
           
           if (_rigidbody2D.velocity.y < 0)
@@ -39,5 +46,10 @@ public class PlayerController : MonoBehaviour
              _rigidbody2D.velocity += Vector2.up * (Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
           }
        }
+
+
+
+
+
 }
 
