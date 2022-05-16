@@ -11,14 +11,10 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-       
 
         transform.position=Vector2.MoveTowards(transform.position,playerController.transform.position,mindistancefromtarget*Time.deltaTime);
 
         transform.right = playerController.transform.position - transform.position;
     }
 
-
-
-  
 }
