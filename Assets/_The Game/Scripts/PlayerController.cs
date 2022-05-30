@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
    private float tempScale = 1f;
    
    //Components Cache:
-   private Rigidbody2D _rigidbody2D;
+   public Rigidbody2D _rigidbody2D;
    private SpriteRenderer _spriteRenderer;
     
        private void Awake()
@@ -29,11 +29,13 @@ public class PlayerController : MonoBehaviour
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
           
 
-         Time.timeScale = 0;
+        // Time.timeScale = 0;
        }
     
        private void Update()
        {
+        
+
           if (Input.GetButtonDown("Jump"))
           {
              _rigidbody2D.velocity = (Vector2.up * jumpValue) + (Vector2.left * horizontalValue);
@@ -65,10 +67,10 @@ public class PlayerController : MonoBehaviour
 
           transform.localScale = new Vector3(tempScale, 1 ,1);
           
-          Debug.Log(tempScale);
+          
        }
 
-
+    
 
 
 
