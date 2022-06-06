@@ -15,12 +15,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-
         transform.position=Vector2.MoveTowards(transform.position,playerPref.transform.position,distanceFromTarget*Time.deltaTime);
-
         transform.right = playerPref.transform.position - transform.position;
-
-        Debug.Log(transform.position);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
