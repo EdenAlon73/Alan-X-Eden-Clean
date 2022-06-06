@@ -10,50 +10,86 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform topspawn;
 
-    public GameObject enemyToSpawn;
+    private float _timer = 1.2f;
 
-    private void Start()
+    private void Update()
     {
-        SpawnEnemy();
+        _timer -= Time.deltaTime;
+
+        if (_timer <= 0)
+        {
+            SpawnEnemy();
+        }
+        
     }
 
     void SpawnEnemy()
     {
 
-
-        if (enemyToSpawn != null)
-        {
             int num = Random.Range(1, 4);
 
             switch (num)
             {
                 case 1:
 
-                    enemyToSpawn.transform.position = leftspawn.position;
+                   GameObject enemypref = ObjectPooler.SharedInstance.GetPooledObject();
 
-                    enemyToSpawn.SetActive(true);
+                    if (enemypref != null)
+                    {
+
+                    enemypref.transform.position = leftspawn.position;
+
+                    enemypref.SetActive(true);
+
+                    }
+
+             
 
                     break;
 
+
                 case 2:
 
-                    enemyToSpawn.transform.position = topspawn.position;
+                enemypref = ObjectPooler.SharedInstance.GetPooledObject();
 
-                    enemyToSpawn.SetActive(true);
+                if (enemypref != null)
+                {
+                    enemypref.transform.position = topspawn.position;
+
+                  
+
+                    enemypref.SetActive(true);
+                }
+
+                
+
+                    
 
                     break;
 
                 case 3:
 
-                    enemyToSpawn.transform.position = rightspawn.position;
+                enemypref = ObjectPooler.SharedInstance.GetPooledObject();
 
-                    enemyToSpawn.SetActive(true);
+                if (enemypref != null)
+
+                {
+                    enemypref.transform.position = rightspawn.position;
+
+                    
+
+                    enemypref.SetActive(true);
+                }
+
+                
+
+                    
 
                     break;
             }
 
-
-        }
+        _timer = 1.2f;
+        
     }
 }
 

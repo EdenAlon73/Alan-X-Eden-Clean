@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6789680504107966932}
   m_Layer: 0
   m_Name: Player_Alan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,3 +150,4 @@ MonoBehaviour:
   horizontalValue: 3
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+  _rigidbody2D: {fileID: 0}

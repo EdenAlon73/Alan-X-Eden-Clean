@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    int Maxplayerhp;
+    int maxPlayerHp;
 
-    int Currentplayerhp;
+    int currentPlayerHp;
 
-    int Enemyhp;
+    int addHealth;
 
-    float Playerdamage;
 
-    float Enemydamage;
+
+    private void Start()
+    {
+        
+    }
+
+
+    private void Update()
+    {
+        
+    }
+
 
 }
 

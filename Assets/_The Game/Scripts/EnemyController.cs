@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public PlayerController playerController;
+    public GameObject playerPref;
 
-    public float mindistancefromtarget;
+    public float distanceFromTarget;
 
+    private void Start()
+    {
+        playerPref = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
 
-        transform.position=Vector2.MoveTowards(transform.position,playerController.transform.position,mindistancefromtarget*Time.deltaTime);
+        transform.position=Vector2.MoveTowards(transform.position,playerPref.transform.position,distanceFromTarget*Time.deltaTime);
 
-        transform.right = playerController.transform.position - transform.position;
+        transform.right = playerPref.transform.position - transform.position;
+
+        Debug.Log(transform.position);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
