@@ -16,16 +16,20 @@ public class PlayerController : MonoBehaviour
    [SerializeField]private float fallMultiplier = 2.5f;
 
    [SerializeField]private float lowJumpMultiplier = 2f;
+
    private int flipJumpDir = -1;
+
    private float tempScale = 1f;
    
    //Components Cache:
    public Rigidbody2D _rigidbody2D;
+
    private SpriteRenderer _spriteRenderer;
     
        private void Awake()
        {
           _rigidbody2D = GetComponent<Rigidbody2D>();
+
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
           
 
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour
           if (Input.GetButtonDown("Jump"))
           {
              _rigidbody2D.velocity = (Vector2.up * jumpValue) + (Vector2.left * horizontalValue);
+
              horizontalValue *= flipJumpDir;
              
              Time.timeScale = 1;
