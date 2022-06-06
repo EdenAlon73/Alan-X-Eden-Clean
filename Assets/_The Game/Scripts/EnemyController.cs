@@ -20,7 +20,6 @@ public class EnemyController : MonoBehaviour
 
         transform.right = playerPref.transform.position - transform.position;
 
-        Debug.Log(transform.position);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

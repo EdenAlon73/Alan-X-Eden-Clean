@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameEvents : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameEvents : MonoBehaviour
         if (Current == null)
         {
             Current = this;
+
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -19,17 +21,34 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action<int> onDealDamage;
 
+    public void DealDamage(int num)
+    {
 
-
-
-
-
-
-
-
-
-
+        if (onDealDamage != null) onDealDamage(num);
+    }
 
 
 }
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

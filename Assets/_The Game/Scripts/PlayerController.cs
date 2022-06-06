@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
           
 
-        // Time.timeScale = 0;
+         Time.timeScale = 0;
        }
     
        private void Update()
