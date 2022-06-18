@@ -17,9 +17,15 @@ public class PlayerController : MonoBehaviour
 
    [SerializeField]private float lowJumpMultiplier = 2f;
 
+    public float jumpCounter;
+
+    public float initialCounter=0.8f;
+
    private int flipJumpDir = -1;
 
    private float tempScale = 1f;
+
+    bool jumppress = false;
    
    //Components Cache:
    public Rigidbody2D _rigidbody2D;
@@ -31,35 +37,40 @@ public class PlayerController : MonoBehaviour
           _rigidbody2D = GetComponent<Rigidbody2D>();
 
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-          
-
-         Time.timeScale = 0;
+         
+          jumpCounter = initialCounter;
        }
     
        private void Update()
        {
-        
 
-          if (Input.GetButtonDown("Jump"))
-          {
-             _rigidbody2D.velocity = (Vector2.up * jumpValue) + (Vector2.left * horizontalValue);
 
-             horizontalValue *= flipJumpDir;
-             
-             Time.timeScale = 1;
-          }
-          
-          if (_rigidbody2D.velocity.y < 0)
-          {
-             _rigidbody2D.velocity += Vector2.up * (Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
-          }
-          else if (_rigidbody2D.velocity.y>0&&!Input.GetButton("Jump"))
-          {
-             _rigidbody2D.velocity += Vector2.up * (Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
-          }
-          
-          
-          tempScale = transform.localScale.x;
+            if(Input.GetButtonDown("Jump"))
+            {
+
+                
+
+                    _rigidbody2D.velocity = (Vector2.up * jumpValue) + (Vector2.left * horizontalValue);
+
+                    horizontalValue *= flipJumpDir;
+
+                    Time.timeScale = 1;
+                
+            }
+
+            if (_rigidbody2D.velocity.y < 0)
+            {
+                _rigidbody2D.velocity += Vector2.up * (Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+            }
+
+            if (_rigidbody2D.velocity.y > 0 && !Input.GetButton("Jump"))
+            {
+                _rigidbody2D.velocity += Vector2.up * (Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
+            }
+
+       
+
+            tempScale = transform.localScale.x;
           
           if (horizontalValue > 0)
           {
@@ -75,7 +86,10 @@ public class PlayerController : MonoBehaviour
           
        }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (gameObject.CompareTag("Wall")) jumpCounter = initialCounter;
+    }
 
 
 
