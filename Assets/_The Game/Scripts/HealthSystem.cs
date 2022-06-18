@@ -1,12 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class HealthSystem
+public class HealthSystem :MonoBehaviour
 {
     private float health;
+
     private int healthMax;
     
     
+    void Awake()
+    {
+        GameEvents.Current.onDealHealth += Heal;
+    }
+
+
+    private void OnDisable()
+    {
+        GameEvents.Current.onDealHealth -= Heal;
+    }
+
     public HealthSystem(int healthMax)
     {
         this.healthMax = healthMax;

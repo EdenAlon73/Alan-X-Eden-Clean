@@ -21,12 +21,18 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action<int> onDealDamage;
+    public event Action<int> onDealHealth;
 
-    public void DealDamage(int num)
+    public void DealHealth(int num)
     {
 
-        if (onDealDamage != null) onDealDamage(num);
+        onDealHealth?.Invoke(num);
+    }
+
+    public event Action OnUpdateHealth;
+    public void UpdateHealth()
+    {
+        OnUpdateHealth?.Invoke();
     }
 
 

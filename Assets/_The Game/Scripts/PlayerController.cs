@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
    [SerializeField]private float lowJumpMultiplier = 2f;
 
+    public int healAmount=5;
+
     public float jumpCounter;
 
     public float initialCounter=0.8f;
@@ -88,7 +90,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameObject.CompareTag("Wall")) jumpCounter = initialCounter;
+        if (collision.gameObject.CompareTag("Wall")) jumpCounter = initialCounter;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameEvents.Current.DealHealth(healAmount);
+
+           // GameEvents.Current.UpdateHealth();
+        }
     }
 
 
