@@ -5,21 +5,18 @@ using UnityEngine.UI;
 
 public class RealHealthSystem : MonoBehaviour
 {
-    public Slider healthSlider;
-
-    public int maxHealth;
-
-    public float currentHealth;
-
-    public float damageAmount;
-
-    public float healAmount;
+    [SerializeField]private Slider healthSlider;
+    
+    [Header("Health Config")]
+    [SerializeField]private int maxHealth;
+    [SerializeField]private float damageAmount;
+    [SerializeField]private float healAmount;
+    private float currentHealth;
 
 
     private void Awake()
     {
         GameEvents.Current.onHeal += Heal;
-
         currentHealth = maxHealth;
     }
 

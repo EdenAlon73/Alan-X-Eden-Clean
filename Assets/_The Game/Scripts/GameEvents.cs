@@ -7,12 +7,13 @@ public class GameEvents : MonoBehaviour
 {
     public static GameEvents Current;
 
-    public RealHealthSystem realHealthSystem;
-
-    public PlayerController playerController;
+    //Cache Ref
+    private RealHealthSystem realHealthSystem;
+    private PlayerController playerController;
 
     private void Awake()
     {
+        
         if (Current == null)
         {
             Current = this;
@@ -23,6 +24,9 @@ public class GameEvents : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        realHealthSystem = FindObjectOfType<RealHealthSystem>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     public event Action onHeal;
