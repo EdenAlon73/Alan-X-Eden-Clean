@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     bool jumppress = false;
    
    //Components Cache:
-   public Rigidbody2D _rigidbody2D;
+   private Rigidbody2D _rigidbody2D;
 
    private SpriteRenderer _spriteRenderer;
     
@@ -97,10 +97,14 @@ public class PlayerController : MonoBehaviour
 
             GameEvents.Current.ScoreChange();
 
-           // GameEvents.Current.UpdateHealth();
+       
         }
     }
 
+    public void PlayerDeath()
+    {
+        gameObject.SetActive(false);
+    }
 
 
 }
