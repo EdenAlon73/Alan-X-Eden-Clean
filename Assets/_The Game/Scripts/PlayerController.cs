@@ -95,6 +95,8 @@ public class PlayerController : MonoBehaviour
 
             GameEvents.Current.Heal();
 
+            GameEvents.Current.ScoreChange();
+
            // GameEvents.Current.UpdateHealth();
         }
     }

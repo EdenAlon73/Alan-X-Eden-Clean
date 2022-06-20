@@ -10,6 +10,7 @@ public class GameEvents : MonoBehaviour
     //Cache Ref
     private RealHealthSystem realHealthSystem;
     private PlayerController playerController;
+    private ScorePulseDotween scorePulseDotween;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class GameEvents : MonoBehaviour
         
         realHealthSystem = FindObjectOfType<RealHealthSystem>();
         playerController = FindObjectOfType<PlayerController>();
+        scorePulseDotween = FindObjectOfType<ScorePulseDotween>();
     }
 
     public event Action onHeal;
@@ -36,6 +38,12 @@ public class GameEvents : MonoBehaviour
         onHeal?.Invoke();
     }
 
+    public event Action onScoreChange;
+
+    public void ScoreChange()
+    {
+        onScoreChange?.Invoke();
+    }
 
 
 }
