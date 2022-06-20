@@ -7,6 +7,10 @@ public class GameEvents : MonoBehaviour
 {
     public static GameEvents Current;
 
+    public RealHealthSystem realHealthSystem;
+
+    public PlayerController playerController;
+
     private void Awake()
     {
         if (Current == null)
@@ -21,19 +25,13 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action<int> onDealHealth;
-
-    public void DealHealth(int num)
+    public event Action onHeal;
+    public void Heal()
     {
 
-        onDealHealth?.Invoke(num);
+        onHeal?.Invoke();
     }
 
-    public event Action OnUpdateHealth;
-    public void UpdateHealth()
-    {
-        OnUpdateHealth?.Invoke();
-    }
 
 
 }

@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
 
    [SerializeField]private float lowJumpMultiplier = 2f;
 
-    public int healAmount=5;
-
     public float jumpCounter;
 
     public float initialCounter=0.8f;
@@ -94,7 +92,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            GameEvents.Current.DealHealth(healAmount);
+
+            GameEvents.Current.Heal();
 
            // GameEvents.Current.UpdateHealth();
         }
