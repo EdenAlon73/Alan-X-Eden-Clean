@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
    private float tempScale = 1f;
 
-    bool jumppress = false;
    
    //Components Cache:
    private Rigidbody2D _rigidbody2D;
