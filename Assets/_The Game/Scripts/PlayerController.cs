@@ -39,9 +39,17 @@ public class PlayerController : MonoBehaviour
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
          
           jumpCounter = initialCounter;
+
+        GameEvents.Current.onPlayerDead += PlayerDeath;
        }
-    
-       private void Update()
+
+
+    private void OnDisable()
+    {
+        GameEvents.Current.onPlayerDead -= PlayerDeath;
+    }
+
+    private void Update()
        {
 
 

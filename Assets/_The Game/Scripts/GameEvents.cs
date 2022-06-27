@@ -45,6 +45,14 @@ public class GameEvents : MonoBehaviour
         onScoreChange?.Invoke();
     }
 
+    public event Action onPlayerDead;
+
+    public void PlayerDead()
+    {
+        onPlayerDead?.Invoke();
+    }
+
+
 
 }
 

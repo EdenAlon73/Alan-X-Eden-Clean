@@ -30,6 +30,8 @@ public class RealHealthSystem : MonoBehaviour
         DealDamage();
 
         UpdateHealthSlider();
+
+        if (currentHealth <= 0) GameEvents.Current.PlayerDead();
     }
 
     public void DealDamage()
