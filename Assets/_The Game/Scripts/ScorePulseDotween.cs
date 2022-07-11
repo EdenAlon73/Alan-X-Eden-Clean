@@ -45,7 +45,7 @@ public class ScorePulseDotween : MonoBehaviour
         {
             case 100:
 
-                scoreText.color = new Color(0, 1, 0, 0.1f);
+                scoreText.color = new Color(0, 1, 0, 0.5f);
 
                 break;
 
