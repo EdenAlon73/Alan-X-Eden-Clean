@@ -13,6 +13,8 @@ public class ScorePulseDotween : MonoBehaviour
     [SerializeField][Range(0, 10)] private int tweenVibrato;
     [SerializeField][Range(0, 90)] private float tweenRandomness;
     private float tweenElasticity;
+    private int _counter=0;
+    public Gradient gradient;
 
     
     private void Awake()
@@ -35,6 +37,50 @@ public class ScorePulseDotween : MonoBehaviour
     private void Update()
     {
         scoreText.text = scoreValue.ToString();
+
+      
+
+        switch (scoreValue)
+        {
+            case 100:
+
+                scoreText.color = new Color(0, 1, 0, 0.1f);
+
+                break;
+
+            case 200:
+
+                scoreText.color = new Color(0, 1, 1, 0.1f);
+
+                break;
+
+            case 300:
+
+                scoreText.color = new Color(0, 0, 1, 0.1f);
+
+                break;
+
+            case 400:
+
+                scoreText.color = new Color(1, 0, 1, 0.1f);
+
+                break;
+
+            case 500:
+
+                scoreText.color = new Color(1, 0.92f, 0.016f, 0.1f);
+
+                break;
+
+
+            case 600:
+
+                scoreText.color = new Color(1, 0, 0, 0.1f);
+
+                break;
+
+        }
+        
     }
 
     private void ChangeScore()

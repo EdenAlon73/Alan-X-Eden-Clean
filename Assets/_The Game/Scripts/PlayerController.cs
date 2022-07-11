@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
    private float tempScale = 1f;
 
-    bool jumppress = false;
    
    //Components Cache:
    private Rigidbody2D _rigidbody2D;
@@ -39,9 +38,17 @@ public class PlayerController : MonoBehaviour
           _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
          
           jumpCounter = initialCounter;
+
+        GameEvents.Current.onPlayerDead += PlayerDeath;
        }
-    
-       private void Update()
+
+
+    private void OnDisable()
+    {
+        GameEvents.Current.onPlayerDead -= PlayerDeath;
+    }
+
+    private void Update()
        {
 
 
