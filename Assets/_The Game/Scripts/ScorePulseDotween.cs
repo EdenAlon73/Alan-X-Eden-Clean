@@ -16,17 +16,19 @@ public class ScorePulseDotween : MonoBehaviour
     private int _counter=0;
     public Gradient gradient;
     public float alphaInt;
+    private DOTweenAnimation DOTweenAnimation;
 
     
     private void Awake()
     {
         GameEvents.Current.onScoreChange += ChangeScore;
 
+        DOTweenAnimation = GetComponent<DOTweenAnimation>();
 
         scoreText = GetComponent<TextMeshProUGUI>();
         scoreValue = 0;
         tweenStrength = new Vector3(1, 1, 0);
-        
+        DOTween.SetTweensCapacity(5000, 100);
     }
 
 
@@ -39,8 +41,8 @@ public class ScorePulseDotween : MonoBehaviour
     {
         scoreText.text = scoreValue.ToString();
 
-      
 
+       
         switch (scoreValue)
         {
             case 100:
@@ -88,7 +90,9 @@ public class ScorePulseDotween : MonoBehaviour
     {
       
             scoreValue += 10;
-            scoreText.transform.DOPunchScale(tweenStrength,tweenDuration, tweenVibrato, tweenElasticity);
-        
+
+        // scoreText.transform.DOPunchScale(tweenStrength,tweenDuration, tweenVibrato, tweenElasticity);
+
+        if (scoreValue < 100 && scoreValue > 0) DOTweenAnimation.DOPlayById("2");
     }
 }
