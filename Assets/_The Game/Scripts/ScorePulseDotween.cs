@@ -15,6 +15,7 @@ public class ScorePulseDotween : MonoBehaviour
     private float tweenElasticity;
     private int _counter=0;
     public Gradient gradient;
+    public float alphaInt;
 
     
     private void Awake()
@@ -50,32 +51,32 @@ public class ScorePulseDotween : MonoBehaviour
 
             case 200:
 
-                scoreText.color = new Color(0, 1, 1, 0.1f);
+                scoreText.color = new Color(0, 1, 1, alphaInt);
 
                 break;
 
             case 300:
 
-                scoreText.color = new Color(0, 0, 1, 0.1f);
+                scoreText.color = new Color(0, 0, 1, alphaInt);
 
                 break;
 
             case 400:
 
-                scoreText.color = new Color(1, 0, 1, 0.1f);
+                scoreText.color = new Color(1, 0, 1, alphaInt);
 
                 break;
 
             case 500:
 
-                scoreText.color = new Color(1, 0.92f, 0.016f, 0.1f);
+                scoreText.color = new Color(1, 0.92f, 0.016f, alphaInt);
 
                 break;
 
 
             case 600:
 
-                scoreText.color = new Color(1, 0, 0, 0.1f);
+                scoreText.color = new Color(1, 0, 0, alphaInt);
 
                 break;
 
